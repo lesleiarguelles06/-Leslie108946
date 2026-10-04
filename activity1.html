@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activity 1 - Leslie ✨</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); display: flex; justify-content: center; align-items: center; height: 100vh; margin:0; }
+  .card { background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 380px; text-align: center; }
+  h2 { margin-bottom: 5px; color: #5a4bd1; }
+  p.sub { color: #888; font-size: 13px; margin-bottom: 20px; }
+  input { width: 90%; padding: 12px 15px; margin: 8px 0; border-radius: 12px; border: 2px solid #eee; outline: none; transition: 0.3s; font-family: Poppins; }
+  input:focus { border-color: #a18cd1; }
+  button { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; padding: 13px 20px; border-radius: 12px; cursor: pointer; width: 97%; font-weight: 600; font-size: 15px; margin-top: 12px; transition: 0.3s; }
+  button:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(108,92,231,0.4); }
+  #output { margin-top: 20px; padding: 18px; background: #f8f7ff; border-radius: 12px; display: none; border-left: 5px solid #6c5ce7; animation: pop 0.4s ease; text-align: left; }
+  @keyframes pop { from { transform: scale(0.8); opacity:0 } to { transform: scale(1); opacity:1 } }
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>👋 Personalized Greeting ✨</h2>
+  <p class="sub">Enter your details below 💖</p>
+  
+  <input type="text" id="nameInput" placeholder="💁‍♀️ Enter your name">
+  <input type="number" id="ageInput" placeholder="🎂 Enter your age">
+  <button onclick="showGreeting()">🚀 Get Greeting</button>
+  
+  <div id="output"></div>
+</div>
+
+<script>
+  function generateGreeting(name, age) {
+    let status, emoji, message;
+    if (age >= 18) {
+      status = "an adult";
+      emoji = "🎉🥳";
+      message = "You can do adult things now! 😉";
+    } else {
+      status = "a minor";
+      emoji = "👧🧒✨";
+      message = "Enjoy your youth! 🌈";
+    }
+    return `Hello, <b>${name}</b>! 💜<br> You are <b>${age} years old</b> and you are <b>${status}</b> ${emoji}<br><small>${message}</small>`;
+  }
+
+  function showGreeting() {
+    const name = document.getElementById('nameInput').value;
+    const age = parseInt(document.getElementById('ageInput').value);
+    const outputDiv = document.getElementById('output');
+
+    if (name === "" || isNaN(age)) {
+      alert("⚠️ Oops! Please enter both name and age! 🙏");
+      return;
+    }
+
+    outputDiv.innerHTML = generateGreeting(name, age);
+    outputDiv.style.display = "block";
+  }
+</script>
+</body>
+</html>
